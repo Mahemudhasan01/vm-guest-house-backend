@@ -13,10 +13,10 @@ import jakarta.validation.constraints.NotNull;
 @Setter
 public class CheckInRequestDto {
     // PROPERTY
-	@NotNull @NotEmpty
+	@NotNull
     private Long propertyId;
     // ROOM
-	@NotNull @NotEmpty
+	@NotNull
     private Long roomId;
     // PRIMARY GUEST
 	@NotNull @NotEmpty
