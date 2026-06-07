@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GuestDocumentRequestDto {
+public class GuestDocumentDto {
 
     private Long guestId;
 

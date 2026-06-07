@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class BookingRoomRequestDto {
+public class BookingRoomDto {
 
     private Long bookingId;
 

@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AppUserRequestDto {
+public class AppUserDto {
 
     private Long propertyId;
 

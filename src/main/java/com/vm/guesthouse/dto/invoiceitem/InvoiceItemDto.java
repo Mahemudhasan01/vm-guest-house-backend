@@ -11,7 +11,7 @@ import com.vm.guesthouse.enums.Enums;
 
 @Getter
 @Setter
-public class InvoiceItemRequestDto {
+public class InvoiceItemDto {
 
     private Long invoiceId;
 

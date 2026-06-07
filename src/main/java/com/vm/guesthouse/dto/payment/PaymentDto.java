@@ -10,7 +10,7 @@ import com.vm.guesthouse.enums.Enums;
 
 @Getter
 @Setter
-public class PaymentRequestDto {
+public class PaymentDto {
 
     private Long bookingId;
 

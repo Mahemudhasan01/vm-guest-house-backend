@@ -11,7 +11,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Getter
 @Setter
-public class CheckInRequestDto {
+public class CheckInDto {
     // PROPERTY
 	@NotNull
     private Long propertyId;
@@ -38,5 +38,5 @@ public class CheckInRequestDto {
     private String remarks;
     // ADDITIONAL PERSONS
     @NotNull @NotEmpty
-    private List<CheckInGuestDto> guests;
+    private List<CheckInGuestListDto> guests;
 }

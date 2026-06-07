@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class InvoiceRequestDto {
+public class InvoiceDto {
 
     private Long bookingId;
 

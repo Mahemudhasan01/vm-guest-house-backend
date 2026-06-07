@@ -1,4 +1,4 @@
-package com.vm.guesthouse.dto.service;
+package com.vm.guesthouse.service;
 
 import com.vm.guesthouse.dto.PageableResponse;
 import com.vm.guesthouse.dto.PaginationSortingFilterSearchDTO;

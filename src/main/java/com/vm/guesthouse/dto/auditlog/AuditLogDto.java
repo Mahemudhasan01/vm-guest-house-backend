@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuditLogRequestDto {
+public class AuditLogDto {
 
     private Long userId;
 

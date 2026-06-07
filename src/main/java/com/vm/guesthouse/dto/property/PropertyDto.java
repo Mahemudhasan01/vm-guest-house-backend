@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PropertyResponseDto {
+public class PropertyDto {
 
     private Long id;
 

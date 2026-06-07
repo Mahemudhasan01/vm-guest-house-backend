@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class GuestRequestDto {
+public class GuestDto {
 
     private Long propertyId;
 
