@@ -3,7 +3,7 @@ package com.vm.guesthouse.entity;
 import com.vm.guesthouse.entity.base.BaseEntity;
 
 import jakarta.persistence.*;
-
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "guest")
+@Builder
 public class Guest extends BaseEntity {
 
     @Id

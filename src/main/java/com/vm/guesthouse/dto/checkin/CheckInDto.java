@@ -14,10 +14,10 @@ import jakarta.validation.constraints.NotNull;
 public class CheckInDto {
     // PROPERTY
 	@NotNull
-    private Long propertyId;
+    private Long propertyId = 1L;
     // ROOM
 	@NotNull
-    private Long roomId;
+    private Long roomId = 1L;
     // PRIMARY GUEST
 	@NotNull @NotEmpty
     private String fullName;
@@ -28,7 +28,7 @@ public class CheckInDto {
     private String city;
     private String state;
     @NotNull @NotEmpty
-    private String idProofNumber;
+    private String idProofNo = "GJ24-704350624";
     // BOOKING
     private Integer adultCount;
     private Integer childCount;
@@ -38,5 +38,5 @@ public class CheckInDto {
     private String remarks;
     // ADDITIONAL PERSONS
     @NotNull @NotEmpty
-    private List<CheckInGuestListDto> guests;
+    private List<CheckInGuestListDto> persons;
 }
