@@ -71,7 +71,7 @@ public class CheckInServiceImpl implements CheckInService{
 		CheckIn checkIn = CheckIn.builder()
 		        .property(property)
 		        .room(room)
-		        .adultCount(dto.getAdultCount())
+		        .adultCount( guests.size() )
 		        .build();
 
 		guests.forEach(g -> g.setCheckIn(checkIn));
