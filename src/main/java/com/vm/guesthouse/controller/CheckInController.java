@@ -3,18 +3,16 @@ package com.vm.guesthouse.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vm.guesthouse.constants.ApiConstants;
-import com.vm.guesthouse.dto.checkin.CheckInGuestListDto;
 import com.vm.guesthouse.dto.checkin.CheckInDto;
 import com.vm.guesthouse.dto.common.ResponseDTO;
-import com.vm.guesthouse.dto.utils.ApplicationUtils;
 import com.vm.guesthouse.service.checkin.CheckInService;
+import com.vm.guesthouse.utils.ApplicationUtils;
 
 import jakarta.validation.Valid;
 

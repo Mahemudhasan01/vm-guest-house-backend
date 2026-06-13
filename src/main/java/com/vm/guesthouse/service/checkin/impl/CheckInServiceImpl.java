@@ -19,12 +19,16 @@ import com.vm.guesthouse.repository.room.RoomRepository;
 import com.vm.guesthouse.service.checkin.CheckInService;
 import com.vm.guesthouse.service.mapper.checkIn.CheckInMapper;
 import com.vm.guesthouse.service.mapper.checkInGuestList.CheckInGuestListMapper;
+
+import jakarta.transaction.Transactional;
+
 import com.vm.guesthouse.entity.CheckIn;
 import com.vm.guesthouse.entity.CheckInGuestList;
 import com.vm.guesthouse.entity.Guest;
 import com.vm.guesthouse.entity.Property;
 
 @Service
+@Transactional(rollbackOn = Exception.class)
 public class CheckInServiceImpl implements CheckInService{
 	@Autowired
 	private CheckInMapper checkInMapper;
@@ -49,7 +53,6 @@ public class CheckInServiceImpl implements CheckInService{
 		//Validate Room
 		Room room = roomRepository.findById(dto.getRoomId()).orElseThrow(() 
 					-> new CustomExceptions("Room not found"));
-		
 				
 		if(room.getStatus() == RoomStatus.OCCUPIED) {
 			throw new CustomExceptions("Room already occupied");
@@ -61,7 +64,12 @@ public class CheckInServiceImpl implements CheckInService{
 		}
 		
 		//Set And Save CheckinDetails
-		return checkInMapper.toDto( saveCheckinDetails(dto, property, room) );
+		CheckInDto checkInDto = checkInMapper.toDto( saveCheckinDetails(dto, property, room) );
+		
+		room.setStatus(RoomStatus.OCCUPIED);
+		roomRepository.save(room);
+		
+		return checkInDto;
 	}
 
 	private CheckIn saveCheckinDetails(CheckInDto dto, Property property, Room room) {
