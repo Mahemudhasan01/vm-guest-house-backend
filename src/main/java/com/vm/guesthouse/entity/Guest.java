@@ -53,6 +53,9 @@ public class Guest extends BaseEntity {
 
     @Column(name = "pin_code")
     private String pinCode;
+    
+    @Column(name = "id_proof_no")
+    private String idProofNo;
 
     @Column(name = "gst_no")
     private String gstNo;
@@ -62,7 +65,4 @@ public class Guest extends BaseEntity {
 
     @Column(name = "photo_url")
     private String photoUrl;
-
-    @Column(name = "is_active")
-    private Boolean isActive = true;
 }

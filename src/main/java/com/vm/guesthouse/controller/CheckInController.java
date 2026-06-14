@@ -3,6 +3,8 @@ package com.vm.guesthouse.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +34,12 @@ public class CheckInController {
 		return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.OK.value())
 				.message("Checkin Successfully!!").isError(Boolean.FALSE)
 				.data( checkInService.save(checkInRequestDto) ).build();
+	}
+	
+	@GetMapping("/current-guest/{roomId}")
+	public ResponseDTO<CheckInDto> getCurrentGuestByRoomId(@PathVariable Long roomId){
+		return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.BAD_REQUEST.value())
+				.message("Guest details fetch successfully").isError(Boolean.FALSE)
+				.data( checkInService.getCurrentGuestByRoomId(roomId) ).build();
 	}
 }

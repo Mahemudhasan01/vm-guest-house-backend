@@ -84,7 +84,7 @@ public class CheckInServiceImpl implements CheckInService{
 
 		guests.forEach(g -> g.setCheckIn(checkIn));
 
-		checkIn.setGuests(guests);
+		checkIn.setPersons(guests);
 
 		return checkInRepository.save(checkIn);
 		
@@ -126,6 +126,13 @@ public class CheckInServiceImpl implements CheckInService{
 	public PageableResponse<CheckInDto> getAll(PaginationSortingFilterSearchDTO paginationSortingFilterSearchDTO) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public CheckInDto getCurrentGuestByRoomId(Long roomId) {
+		CheckInDto checkInDto = checkInMapper.toDto( checkInRepository.findByRoomId(roomId) );
+		
+		return checkInDto;
 	}
 
 }

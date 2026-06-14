@@ -8,4 +8,6 @@ import com.vm.guesthouse.entity.CheckIn;
 
 public interface CheckInRepository extends JpaRepository<CheckIn, Long>, JpaSpecificationExecutor<CheckIn> {
 
+	CheckIn findByRoomId(Long roomId);
+
 }
