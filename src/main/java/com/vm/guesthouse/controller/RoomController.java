@@ -27,10 +27,12 @@ public class RoomController {
 		PageableResponse<RoomDto> response = roomService.getAll(paginationSortingFilterSearchDTO);
 
         if (response.getData() == null || ObjectUtils.isEmpty(response.getData())) {
-            return ResponseDTO.builder().statusCode(HttpStatus.NO_CONTENT.value()).message(MessageConstants.NO_DATA_FOUND).isError(Boolean.FALSE).build();
+            return ResponseDTO.builder().statusCode(HttpStatus
+            		.NO_CONTENT.value()).message(MessageConstants.NO_DATA_FOUND).isError(Boolean.FALSE).build();
         }
 
-        return ResponseDTO.builder().statusCode(HttpStatus.OK.value()).message(MessageConstants.DATA_RETRIEVED_SUCCESSFULLY).isError(Boolean.FALSE).data(response).build();
+        return ResponseDTO.builder().statusCode(HttpStatus.OK.value())
+        		.message(MessageConstants.DATA_RETRIEVED_SUCCESSFULLY).isError(Boolean.FALSE).data(response).build();
 	}
 }
 
