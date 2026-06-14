@@ -1,6 +1,5 @@
 package com.vm.guesthouse.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +18,11 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping(ApiConstants.VM_GUEST_HOUSE + ApiConstants.REST_API_URL_CHECKIN)
 public class CheckInController {
-	@Autowired
-	private CheckInService checkInService;
+	private final CheckInService checkInService;
+
+	CheckInController(CheckInService checkInService) {
+		this.checkInService = checkInService;
+	}
 	
 	@PostMapping()
 	public ResponseDTO<CheckInDto> save(@Valid @RequestBody CheckInDto checkInRequestDto, BindingResult result){
