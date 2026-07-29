@@ -3,14 +3,21 @@ package com.vm.guesthouse.entity;
 import com.vm.guesthouse.entity.base.BaseEntity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "guest")
 @Builder

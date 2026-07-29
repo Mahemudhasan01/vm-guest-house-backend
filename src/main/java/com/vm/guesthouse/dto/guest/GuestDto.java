@@ -39,4 +39,6 @@ public class GuestDto {
     private String companyName;
 
     private String photoUrl;
+    
+    private String idProofNo;
 }

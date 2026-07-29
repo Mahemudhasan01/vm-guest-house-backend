@@ -10,7 +10,7 @@ import com.vm.guesthouse.entity.Room;
 
 public interface GuestRepository extends JpaRepository<Guest, Long>, JpaSpecificationExecutor<Guest> {
 
-	Optional<Guest> findByMobile(String mobile);
+	Optional<Guest> findTopByMobile(String mobile);
 
 
 }

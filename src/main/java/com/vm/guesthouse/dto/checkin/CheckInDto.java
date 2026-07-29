@@ -23,28 +23,12 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CheckInDto {
 
-    @NotNull
     private Long propertyId;
 
-    @NotNull
     private Long roomId;
 
-    @NotBlank
-    private String fullName;
-
-    @NotBlank
-    private String mobile;
-
-    private String gender;
-
-    private String address;
-
-    private String city;
-
-    private String state;
-
-    @NotBlank
-    private String idProofNo;
+    @Valid
+    private GuestDto primaryGuest;
 
     private Integer adultCount;
 
@@ -59,5 +43,5 @@ public class CheckInDto {
     private String remarks;
 
     @Valid
-    private List<CheckInGuestListDto> persons = new ArrayList<>();
+    private List<CheckInGuestListDto> persons;
 }

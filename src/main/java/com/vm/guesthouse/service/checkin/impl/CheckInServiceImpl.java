@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.vm.guesthouse.dto.PageableResponse;
 import com.vm.guesthouse.dto.PaginationSortingFilterSearchDTO;
 import com.vm.guesthouse.dto.checkin.CheckInDto;
+import com.vm.guesthouse.dto.guest.GuestDto;
 import com.vm.guesthouse.entity.Room;
 import com.vm.guesthouse.enums.Enums.RoomStatus;
 import com.vm.guesthouse.exceptions.CustomExceptions;
@@ -53,14 +54,14 @@ public class CheckInServiceImpl implements CheckInService{
 		//Validate Room
 		Room room = roomRepository.findById(dto.getRoomId()).orElseThrow(() 
 					-> new CustomExceptions("Room not found"));
-				
+
 		if(room.getStatus() == RoomStatus.OCCUPIED) {
 			throw new CustomExceptions("Room already occupied");
 		}
-		Guest primaryGuest = guestRepository.findByMobile(dto.getMobile()).orElse(null);
+		Guest primaryGuest = guestRepository.findTopByMobile(dto.getPrimaryGuest().getMobile()).orElse(null);
 		
 		if(primaryGuest == null) {//If First Time CheckIn
-			savePrimaryGuest(primaryGuest, dto, property);
+			savePrimaryGuest(dto, property);
 		}
 		
 		//Set And Save CheckinDetails
@@ -90,18 +91,21 @@ public class CheckInServiceImpl implements CheckInService{
 		
 	}
 
-	private void savePrimaryGuest(Guest primaryGuest, CheckInDto dto, Property property) {
-		primaryGuest = Guest.builder()
-	            .property( property )
-	            .fullName(dto.getFullName())
-	            .mobile(dto.getMobile())
-	            .gender(dto.getGender())
-	            .address(dto.getAddress())
-	            .city(dto.getCity())
-	            .state(dto.getState())
+	private Guest savePrimaryGuest(CheckInDto dto, Property property) {
+	    GuestDto guestDto = dto.getPrimaryGuest();
+
+	    Guest primaryGuest = Guest.builder()
+	            .property(property)
+	            .fullName(guestDto.getFullName())
+	            .mobile(guestDto.getMobile())
+	            .gender(guestDto.getGender())
+	            .address(guestDto.getAddress())
+	            .city(guestDto.getCity())
+	            .state(guestDto.getState())
+	            .idProofNo(guestDto.getIdProofNo())
 	            .build();
 
-	    guestRepository.save(primaryGuest);
+	    return guestRepository.save(primaryGuest);
 	}
 
 	@Override

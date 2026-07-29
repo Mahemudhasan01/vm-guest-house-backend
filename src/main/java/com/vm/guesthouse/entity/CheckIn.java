@@ -21,12 +21,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 public class CheckIn extends BaseEntity {
 
     @Id
@@ -42,11 +43,7 @@ public class CheckIn extends BaseEntity {
     @ManyToOne
     private Guest primaryGuest;
     
-    @OneToMany(
-            mappedBy = "checkIn",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
+	@OneToMany(mappedBy = "checkIn", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CheckInGuestList> persons = new ArrayList<>();
 
     private LocalDateTime checkInDateTime;
