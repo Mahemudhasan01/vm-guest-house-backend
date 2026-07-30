@@ -19,9 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "guest")
+@Table(name = "primary_guest")
 @Builder
-public class Guest extends BaseEntity {
+public class PrimaryGuest extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

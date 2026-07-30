@@ -20,7 +20,7 @@ public class GuestDocument extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guest_id", nullable = false)
-    private Guest guest;
+    private PrimaryGuest guest;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "document_type", nullable = false)

@@ -41,10 +41,10 @@ public class CheckIn extends BaseEntity {
     private Room room;
 
     @ManyToOne
-    private Guest primaryGuest;
+    private PrimaryGuest primaryGuest;
     
 	@OneToMany(mappedBy = "checkIn", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CheckInGuestList> persons = new ArrayList<>();
+    private List<ExtraPerson> persons = new ArrayList<>();
 
     private LocalDateTime checkInDateTime;
 

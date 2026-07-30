@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CheckInGuestListDto {
+public class ExtraPersonDto {
 
     private String fullName;
 

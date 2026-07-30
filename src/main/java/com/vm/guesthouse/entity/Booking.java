@@ -26,7 +26,7 @@ public class Booking extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "guest_id", nullable = false)
-    private Guest guest;
+    private PrimaryGuest guest;
 
     @Column(name = "booking_no", unique = true, nullable = false)
     private String bookingNo;

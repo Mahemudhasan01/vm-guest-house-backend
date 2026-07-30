@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.vm.guesthouse.dto.PageableResponse;
 import com.vm.guesthouse.dto.PaginationSortingFilterSearchDTO;
 import com.vm.guesthouse.dto.checkin.CheckInDto;
-import com.vm.guesthouse.dto.guest.GuestDto;
+import com.vm.guesthouse.dto.guest.PrimaryGuestDto;
 import com.vm.guesthouse.entity.Room;
 import com.vm.guesthouse.enums.Enums.RoomStatus;
 import com.vm.guesthouse.exceptions.CustomExceptions;
@@ -24,8 +24,8 @@ import com.vm.guesthouse.service.mapper.checkInGuestList.CheckInGuestListMapper;
 import jakarta.transaction.Transactional;
 
 import com.vm.guesthouse.entity.CheckIn;
-import com.vm.guesthouse.entity.CheckInGuestList;
-import com.vm.guesthouse.entity.Guest;
+import com.vm.guesthouse.entity.ExtraPerson;
+import com.vm.guesthouse.entity.PrimaryGuest;
 import com.vm.guesthouse.entity.Property;
 
 @Service
@@ -58,7 +58,7 @@ public class CheckInServiceImpl implements CheckInService{
 		if(room.getStatus() == RoomStatus.OCCUPIED) {
 			throw new CustomExceptions("Room already occupied");
 		}
-		Guest primaryGuest = guestRepository.findTopByMobile(dto.getPrimaryGuest().getMobile()).orElse(null);
+		PrimaryGuest primaryGuest = guestRepository.findTopByMobile(dto.getPrimaryGuest().getMobile()).orElse(null);
 		
 		if(primaryGuest == null) {//If First Time CheckIn
 			savePrimaryGuest(dto, property);
@@ -74,7 +74,7 @@ public class CheckInServiceImpl implements CheckInService{
 	}
 
 	private CheckIn saveCheckinDetails(CheckInDto dto, Property property, Room room) {
-		List<CheckInGuestList> guests =
+		List<ExtraPerson> guests =
 		        checkInGuestListMapper.toEntityList(dto.getPersons());
 
 		CheckIn checkIn = CheckIn.builder()
@@ -91,10 +91,10 @@ public class CheckInServiceImpl implements CheckInService{
 		
 	}
 
-	private Guest savePrimaryGuest(CheckInDto dto, Property property) {
-	    GuestDto guestDto = dto.getPrimaryGuest();
+	private PrimaryGuest savePrimaryGuest(CheckInDto dto, Property property) {
+	    PrimaryGuestDto guestDto = dto.getPrimaryGuest();
 
-	    Guest primaryGuest = Guest.builder()
+	    PrimaryGuest primaryGuest = PrimaryGuest.builder()
 	            .property(property)
 	            .fullName(guestDto.getFullName())
 	            .mobile(guestDto.getMobile())

@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
-import com.vm.guesthouse.dto.checkin.CheckInGuestListDto;
-import com.vm.guesthouse.entity.CheckInGuestList;
+import com.vm.guesthouse.dto.checkin.ExtraPersonDto;
+import com.vm.guesthouse.entity.ExtraPerson;
 
 @Mapper(
 	    componentModel = "spring",
@@ -16,11 +16,11 @@ import com.vm.guesthouse.entity.CheckInGuestList;
 	)
 public interface CheckInGuestListMapper {
 	
-	CheckInGuestListDto toDto(CheckInGuestList entity);
+	ExtraPersonDto toDto(ExtraPerson entity);
 
-	CheckInGuestList toEntity(CheckInGuestListDto dto);
+	ExtraPerson toEntity(ExtraPersonDto dto);
 
-    List<CheckInGuestListDto> toDtoList(List<CheckInGuestList> entities);
+    List<ExtraPersonDto> toDtoList(List<ExtraPerson> entities);
 
-    List<CheckInGuestList> toEntityList(List<CheckInGuestListDto> dtos);
+    List<ExtraPerson> toEntityList(List<ExtraPersonDto> dtos);
 }

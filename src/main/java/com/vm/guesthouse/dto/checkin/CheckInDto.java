@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vm.guesthouse.dto.guest.GuestDto;
-import com.vm.guesthouse.entity.Guest;
+import com.vm.guesthouse.dto.guest.PrimaryGuestDto;
+import com.vm.guesthouse.entity.PrimaryGuest;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -28,7 +28,7 @@ public class CheckInDto {
     private Long roomId;
 
     @Valid
-    private GuestDto primaryGuest;
+    private PrimaryGuestDto primaryGuest;
 
     private Integer adultCount;
 
@@ -43,5 +43,5 @@ public class CheckInDto {
     private String remarks;
 
     @Valid
-    private List<CheckInGuestListDto> persons;
+    private List<ExtraPersonDto> persons;
 }

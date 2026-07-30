@@ -8,9 +8,9 @@ import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 
 import com.vm.guesthouse.dto.checkin.CheckInDto;
-import com.vm.guesthouse.dto.guest.GuestDto;
+import com.vm.guesthouse.dto.guest.PrimaryGuestDto;
 import com.vm.guesthouse.entity.CheckIn;
-import com.vm.guesthouse.entity.Guest;
+import com.vm.guesthouse.entity.PrimaryGuest;
 
 @Mapper(
 	    componentModel = "spring",
