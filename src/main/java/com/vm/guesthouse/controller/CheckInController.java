@@ -1,17 +1,23 @@
 package com.vm.guesthouse.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vm.guesthouse.constants.ApiConstants;
+import com.vm.guesthouse.constants.MessageConstants;
+import com.vm.guesthouse.dto.PageableResponse;
+import com.vm.guesthouse.dto.PaginationSortingFilterSearchDTO;
 import com.vm.guesthouse.dto.checkin.CheckInDto;
 import com.vm.guesthouse.dto.common.ResponseDTO;
+import com.vm.guesthouse.dto.room.RoomDto;
 import com.vm.guesthouse.service.checkin.CheckInService;
 import com.vm.guesthouse.utils.ApplicationUtils;
 
@@ -44,4 +50,30 @@ public class CheckInController {
 				.message("Guest details fetch successfully").isError(Boolean.FALSE)
 				.data( checkInService.getCurrentGuestByRoomId(roomId) ).build();
 	}
+	
+	@GetMapping()
+	public ResponseDTO getAll(PaginationSortingFilterSearchDTO paginationSortingFilterSearchDTO){
+		PageableResponse<CheckInDto> response = checkInService.getAll(paginationSortingFilterSearchDTO);
+
+		if (response.getData() == null || ObjectUtils.isEmpty(response.getData())) {
+            return ResponseDTO.builder().statusCode(HttpStatus
+            		.NO_CONTENT.value()).message(MessageConstants.NO_DATA_FOUND).isError(Boolean.FALSE).build();
+        }
+
+        return ResponseDTO.builder().statusCode(HttpStatus.OK.value())
+        		.message(MessageConstants.DATA_RETRIEVED_SUCCESSFULLY).isError(Boolean.FALSE).data(response).build();
+	}
+	
+	@PutMapping()
+	public ResponseDTO<CheckInDto> update(@Valid @RequestBody CheckInDto checkInRequestDto, BindingResult result){
+		if (result.hasErrors()) {
+			return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.BAD_REQUEST.value())
+					.errorMessage(ApplicationUtils.getErrors(result)).isError(Boolean.TRUE).build();
+		}
+		
+		return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.OK.value())
+				.message("Checkin Successfully!!").isError(Boolean.FALSE)
+				.data( checkInService.update(checkInRequestDto) ).build();
+	}
+	
 }

@@ -23,6 +23,8 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class CheckInDto {
 
+	private Long id;
+	
     private Long propertyId;
 
     private Long roomId;

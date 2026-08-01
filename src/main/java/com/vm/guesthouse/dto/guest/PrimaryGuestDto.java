@@ -11,6 +11,8 @@ import java.time.LocalDate;
 @Setter
 public class PrimaryGuestDto {
 
+	private Long id;
+	
     private Long propertyId;
 
     @NotBlank

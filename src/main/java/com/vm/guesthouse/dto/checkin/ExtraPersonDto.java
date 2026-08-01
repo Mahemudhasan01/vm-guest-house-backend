@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExtraPersonDto {
+	
+	private Long id;
 
     private String fullName;
 
