@@ -8,6 +8,8 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
@@ -26,10 +28,12 @@ public abstract class BaseEntity {
     @Column(name = "is_delete")
     private Boolean isDelete = false;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @CreatedDate
     @Column(name = "created_date_time", updatable = false)
     private LocalDateTime createdDateTime;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     @LastModifiedDate
     @Column(name = "modified_date_time")
     private LocalDateTime modifiedDateTime;

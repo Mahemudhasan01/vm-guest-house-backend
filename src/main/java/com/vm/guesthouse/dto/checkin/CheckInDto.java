@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.vm.guesthouse.dto.guest.PrimaryGuestDto;
 import com.vm.guesthouse.entity.PrimaryGuest;
+import com.vm.guesthouse.entity.Room;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -31,6 +32,8 @@ public class CheckInDto {
 
     @Valid
     private PrimaryGuestDto primaryGuest;
+    
+    private Room room;
 
     private Integer adultCount;
 
