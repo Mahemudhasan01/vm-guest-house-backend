@@ -1,5 +1,6 @@
 package com.vm.guesthouse.dto.room;
 
+import com.vm.guesthouse.entity.RoomType;
 import com.vm.guesthouse.enums.Enums;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +23,8 @@ public class RoomDto {
     private String propertyName;
 
     private Long roomTypeId;
+    
+    private RoomType roomType;
     
     private String typeName;
 

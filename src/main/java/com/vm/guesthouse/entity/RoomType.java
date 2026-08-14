@@ -31,6 +31,8 @@ public class RoomType extends BaseEntity {
 
     @Column(name = "base_tariff", precision = 10, scale = 2)
     private BigDecimal baseTariff;
+    
+    private BigDecimal gstRate;
 
     @Column(name = "max_capacity")
     private Integer maxCapacity;

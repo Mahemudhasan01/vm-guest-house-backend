@@ -1,6 +1,7 @@
 package com.vm.guesthouse.entity;
 
 import com.vm.guesthouse.entity.base.BaseEntity;
+import com.vm.guesthouse.enums.Enums;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -63,6 +64,10 @@ public class PrimaryGuest extends BaseEntity {
     
     @Column(name = "id_proof_no")
     private String idProofNo;
+    
+    @Column(name = "proof_type")
+    @Enumerated(EnumType.STRING)
+    private Enums.DocumentType idProofType;
 
     @Column(name = "gst_no")
     private String gstNo;
@@ -72,4 +77,7 @@ public class PrimaryGuest extends BaseEntity {
 
     @Column(name = "photo_url")
     private String photoUrl;
+    
+    @Column(name = "id_proof_url")
+    private String idProofUrl;
 }

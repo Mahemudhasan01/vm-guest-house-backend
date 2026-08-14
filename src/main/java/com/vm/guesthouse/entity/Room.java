@@ -22,7 +22,7 @@ public class Room extends BaseEntity {
     @JoinColumn(name = "property_id", nullable = false)
     private Property property;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "room_type_id", nullable = false)
     private RoomType roomType;
 

@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import com.vm.guesthouse.enums.Enums;
+
 @Getter
 @Setter
 public class PrimaryGuestDto {
@@ -43,4 +45,6 @@ public class PrimaryGuestDto {
     private String photoUrl;
     
     private String idProofNo;
+    
+    private Enums.DocumentType idProofType;
 }
