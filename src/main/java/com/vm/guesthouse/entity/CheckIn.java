@@ -1,14 +1,19 @@
 package com.vm.guesthouse.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.vm.guesthouse.entity.base.BaseEntity;
+import com.vm.guesthouse.enums.Enums;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -46,7 +51,18 @@ public class CheckIn extends BaseEntity {
 	@OneToMany(mappedBy = "checkIn", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExtraPerson> persons = new ArrayList<>();
 
-    private LocalDateTime checkInDateTime;
+	@Column(nullable = false)
+    private LocalDate checkInDate;
+	@Column(nullable = false)
+    private String checkInTime;
+	
+	@Column(nullable = true)
+    private LocalDate checkOutDate;
+	@Column(nullable = true)
+    private String checkOutTime;
+	
+	@Enumerated(EnumType.STRING)
+	private Enums.StayStatus stayStatus = Enums.StayStatus.CHECKED_IN;
 
     private Integer adultCount;
 
@@ -54,6 +70,7 @@ public class CheckIn extends BaseEntity {
 
     private Integer extraPersonCount;
 
+    @Column(nullable = false)
     private BigDecimal tariff;
 
     private BigDecimal advanceAmount;

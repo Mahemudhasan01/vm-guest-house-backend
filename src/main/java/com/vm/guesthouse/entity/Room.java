@@ -38,7 +38,7 @@ public class Room extends BaseEntity {
 
     @Column(name = "notes")
     private String notes;
-
+    
     @Column(name = "is_active")
     private Boolean isActive = true;
 }

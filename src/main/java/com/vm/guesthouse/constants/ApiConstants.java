@@ -2,8 +2,9 @@ package com.vm.guesthouse.constants;
 
 public class ApiConstants {
 	public static final String VM_GUEST_HOUSE = "/user/api/v1";
+//	public static final String VM_GUEST_HOUSE = "/user";
 	public static final String REST_API_URL_CHECKIN = "/checkin";
-	public static final String REST_API_URL_CHECKOUT = "/checkout";
+	public static final String REST_API_URL_CHECKOUT = "/check-out";
 	public static final String REST_API_URL_ROOM = "/rooms";
 	public static final String REST_API_URL_GUEST = "/guest";
 }

@@ -101,6 +101,13 @@ public class CheckInServiceImpl implements CheckInService{
 		        .room(room)
 		        .primaryGuest(primaryGuest)
 		        .adultCount( guests.size() )
+		        .childCount( dto.getChildCount() )
+		        .checkInDate( dto.getCheckInDate() )
+		        .checkInTime( dto.getCheckInTime() )
+		        .tariff( dto.getTariff() )
+		        .advanceAmount( dto.getAdvanceAmount() )
+		        .extraPersonCount( dto.getExtraPersonCount() )
+		        .remarks( dto.getRemarks() )
 		        .build();
 
 		guests.forEach(g -> g.setCheckIn(checkIn));
@@ -139,6 +146,8 @@ public class CheckInServiceImpl implements CheckInService{
 	    checkIn.setAdvanceAmount(dto.getAdvanceAmount());
 
 	    checkIn.setRemarks(dto.getRemarks());
+	    checkIn.setCheckInDate( dto.getCheckInDate() );
+	    checkIn.setCheckInTime( dto.getCheckInTime() );
 
 	    // Usually check-in time should not change after creation.
 	    // Uncomment only if your business requires it.
