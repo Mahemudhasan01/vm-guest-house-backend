@@ -33,7 +33,7 @@ public class CheckInController {
 	}
 	
 	@PostMapping()
-	public ResponseDTO<CheckInDto> save(@Valid @RequestBody CheckInDto checkInRequestDto, BindingResult result){
+	public ResponseDTO<CheckInDto> save(@RequestBody CheckInDto checkInRequestDto, BindingResult result){
 		if (result.hasErrors()) {
 			return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.BAD_REQUEST.value())
 					.errorMessage(ApplicationUtils.getErrors(result)).isError(Boolean.TRUE).build();
@@ -65,7 +65,7 @@ public class CheckInController {
 	}
 	
 	@PutMapping()
-	public ResponseDTO<CheckInDto> update(@Valid @RequestBody CheckInDto checkInRequestDto, BindingResult result){
+	public ResponseDTO<CheckInDto> update(@RequestBody CheckInDto checkInRequestDto, BindingResult result){
 		if (result.hasErrors()) {
 			return ResponseDTO.<CheckInDto>builder().statusCode(HttpStatus.BAD_REQUEST.value())
 					.errorMessage(ApplicationUtils.getErrors(result)).isError(Boolean.TRUE).build();

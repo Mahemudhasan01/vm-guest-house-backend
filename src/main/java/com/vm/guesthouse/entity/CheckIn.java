@@ -27,8 +27,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -62,7 +61,7 @@ public class CheckIn extends BaseEntity {
     private String checkOutTime;
 	
 	@Enumerated(EnumType.STRING)
-	private Enums.StayStatus stayStatus = Enums.StayStatus.CHECKED_IN;
+	private Enums.StayStatus stayStatus;
 
     private Integer adultCount;
 

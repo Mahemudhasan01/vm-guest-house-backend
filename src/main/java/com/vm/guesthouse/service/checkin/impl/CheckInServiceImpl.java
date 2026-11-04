@@ -24,6 +24,7 @@ import com.vm.guesthouse.entity.ExtraPerson;
 import com.vm.guesthouse.entity.PrimaryGuest;
 import com.vm.guesthouse.entity.Property;
 import com.vm.guesthouse.entity.Room;
+import com.vm.guesthouse.enums.Enums;
 import com.vm.guesthouse.enums.Enums.RoomStatus;
 import com.vm.guesthouse.exceptions.CustomExceptions;
 import com.vm.guesthouse.repository.PrimaryGuest.PrimaryGuestRepository;
@@ -108,6 +109,7 @@ public class CheckInServiceImpl implements CheckInService{
 		        .advanceAmount( dto.getAdvanceAmount() )
 		        .extraPersonCount( dto.getExtraPersonCount() )
 		        .remarks( dto.getRemarks() )
+		        .stayStatus( Enums.StayStatus.CHECKED_IN )
 		        .build();
 
 		guests.forEach(g -> g.setCheckIn(checkIn));

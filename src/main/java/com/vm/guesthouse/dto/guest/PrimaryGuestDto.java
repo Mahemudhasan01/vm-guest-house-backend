@@ -42,9 +42,12 @@ public class PrimaryGuestDto {
 
     private String companyName;
 
+    @NotBlank
     private String photoUrl;
     
+    @NotBlank
     private String idProofNo;
     
+    @NotBlank
     private Enums.DocumentType idProofType;
 }

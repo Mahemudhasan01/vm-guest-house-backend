@@ -34,7 +34,6 @@ public class CheckInDto {
 
     private Long roomId;
 
-    @Valid
     private PrimaryGuestDto primaryGuest;
     
     private Room room;
